@@ -1,0 +1,9 @@
+.list{
+    width: 200px !important; 
+}
+
+table img.list {
+    width: 30px !important;
+}
+
+/* yang punya img list yang ada di dalem table, table jauh diatas ga harus di tr tdnya*/
