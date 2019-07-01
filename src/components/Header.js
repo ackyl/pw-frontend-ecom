@@ -41,7 +41,7 @@ class Header extends Component {
             return (
                 <div>
                     <Navbar color="light" light expand="md">
-                    <NavbarBrand href="/">simpleMerce</NavbarBrand>
+                    <NavbarBrand href="/"><h4>OWOPEDIA</h4></NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>

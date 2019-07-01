@@ -36,6 +36,30 @@ class ManageProduct extends Component {
     deleteProduct = (id) => {
         axios.delete('http://localhost:2019/products/' + id).then(r => this.getData())
     }
+
+    editProduct = (id) => {
+        this.state.products[id-1].name = this.editName.value
+        this.state.products[id-1].desc = this.editDesc.value
+        this.state.products[id-1].price = this.editPrice.value
+
+        axios.patch('http://localhost:2019/products/' + id, {
+            name : this.state.products[id-1].name,
+            desc : this.state.products[id-1].desc,
+            price : this.state.products[id-1].price
+        }).then(r => {
+            this.getData()
+        })
+    }
+
+    viewEdit = (id) => {
+        this.state.products[id-1].view = 1
+        this.setState({products: this.state.products})
+    }
+
+    viewDefault = (id) => {
+        this.state.products[id-1].view = undefined
+        this.setState({products: this.state.products})
+    }
     
     componentDidMount(){
         this.getData()
@@ -43,17 +67,32 @@ class ManageProduct extends Component {
 
     renderList = () => {
         return this.state.products.map( (item,index) => {
-            return (
-                <tr key={index}>
-                    <td>{item.id}</td>
-                    <td>{item.name}</td>
-                    <td>{item.desc}</td>
-                    <td>{item.price}</td>
-                    <td><img className = 'list' src={item.src}/></td>
-                    <td><button className = "btn btn-primary">Edit</button>
-                    <button className = "btn btn-warning" onClick={() => {this.deleteProduct(item.id)}}>Delete</button></td>
-                </tr>
-            )
+            if(item.view == undefined){
+                return (
+                    <tr key={index}>
+                        <td>{item.id}</td>
+                        <td>{item.name}</td>
+                        <td>{item.desc}</td>
+                        <td>{item.price}</td>
+                        <td><img className = 'list' src={item.src}/></td>
+                        <td><button className = "btn btn-primary" onClick={() => {this.viewEdit(item.id)}}>Edit</button>
+                        <button className = "btn btn-warning" onClick={() => {this.deleteProduct(item.id)}}>Delete</button></td>
+                    </tr>
+                )
+            }else{
+                return(
+                    <tr key={index}>
+                        <td>{item.id}</td>
+                        <td><input ref={(input) => this.editName = input} defaultValue={item.name}/></td>
+                        <td><input ref={(input) => this.editDesc = input} defaultValue={item.desc}></input></td>
+                        <td><input  ref={(input) => this.editPrice = input}defaultValue={item.price}></input></td>
+                        <td><img className = 'list' src={item.src}/></td>
+                        <td><button className = "btn btn-primary" onClick={() => {this.viewDefault(item.id)}}>Cancel</button>
+                        <button className = "btn btn-warning" onClick={() => this.editProduct(item.id)}>Save</button></td>
+                    </tr> 
+                )
+            }
+            
         })
     }
     

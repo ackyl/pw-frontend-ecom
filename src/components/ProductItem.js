@@ -1,18 +1,20 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 class ProductItem extends Component {
 
     render(){
-        var{name, desc, price, src} = this.props.item
+        var{id, name, price, src} = this.props.item
 
         return (
-            <div className="card col-4 m-5">
+            <div className="card col-3 m-5">
                 <img className='card-img-top' src={src}/>
                 <div className='card-body'>
                     <h5 className='card-title'>{name}</h5>
-                    <p className='card-text'>{desc}</p>
                     <p className='card-text'>${price}</p>
-                    <button className = "btn btn-outline-primary btn-sm">Details</button>
+                    <Link to={'/product/' + id}>
+                        <button className = "btn btn-outline-primary btn-sm">Details</button>
+                    </Link>
                     <button className = "btn btn-outline-primary btn-sm">Add To Cart</button>
                 </div>
             </div>

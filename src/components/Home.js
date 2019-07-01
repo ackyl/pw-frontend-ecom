@@ -15,6 +15,16 @@ class Home extends Component {
         this.getData()
     }
 
+    sortPrice = (a,b) => {
+        if ( a.price < b.price ){
+            return -1;
+          }
+          if ( a.price > b.price ){
+            return 1;
+          }
+          return 0;
+    }
+
     onBtnSearch = () => {
         const name = this.name.value
         const min = this.min.value
@@ -24,12 +34,7 @@ class Home extends Component {
 
         x = x.filter(item=>{
             if(item.name.toLowerCase().includes(name)){
-                console.log('zzz')
                 return true
-            }
-            else if(item.name === ''){
-                console.log('aa')
-                return true                
             }
         })
 
@@ -37,7 +42,6 @@ class Home extends Component {
             if(min === ''){
                 return true
             }else{
-                console.log('test')
                 return item.price >= min
             }
         })
@@ -46,61 +50,12 @@ class Home extends Component {
             if(max === ''){
                 return true
             }else{
-                console.log('test')
                 return item.price <= max
             }
         })
 
+        x.sort(this.sortPrice)
         this.setState({search: x})
-
-        // x = x.filter(item=>{
-        //     if(item.price < max){
-        //         console.log('c')
-        //         return true
-        //     }else if(item.min === ''){
-        //         console.log('d')
-        //         return true
-        //     }
-        // })
-
-        // x = x.filter(item=>{
-        //     if(item.price < max)
-        //         return true
-        // })
-
-        console.log('min: ' + min)
-        console.log('max: ' + max)
-
-        console.log(x)
-
-        // if(name != null){
-        //     var arr = this.state.products.filter(item=>{
-        //         if(item.name.toLowerCase().includes(name))
-        //             return true
-        //     })
-        // }else if(min != null){
-        //     var arr = arr.filter(item=>{
-        //         if(item.price > min)
-        //             return true
-        //     })
-        // }else if(max != null){
-        //     var arr = arr.filter(item=>{
-        //         if(item.price < max)
-        //             return true
-        //     })
-        // }
-
-        // this.setState({search: arr})
-
-        // if(name === '' && min === '' && max === '')
-        //     this.setState({count: 0, search: []})
-
-        // if(this.state.search.length == 0)
-        // this.setState({count: 1})
-
-        // console.log(this.state.count)
-        // console.log(arr)
-
     }
 
     getData = () => {
@@ -108,7 +63,8 @@ class Home extends Component {
             .then(r => {
                 this.setState({products: r.data})
                 this.setState({search: r.data})
-                //kalo make this.state.products = data, datanya ga keupdate karena render duluan baru ke fungsi ini
+                //kalo make this.state.products = data,
+                //datanya ga keupdate karena render duluan baru ke fungsi ini
             })
     }
 
