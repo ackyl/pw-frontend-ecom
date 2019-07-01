@@ -21,7 +21,6 @@ class Login extends Component {
     render () {
         return (
             <div>
-                <h1>{this.props.user.username}</h1>
                 <div className = 'mt-5 row'>
                     <div className = 'col-sm-4 mx-auto card'>
                         <div className = 'card-body'>
@@ -47,8 +46,7 @@ class Login extends Component {
                                 />
                             </form>
 
-                            <button onClick={this.onButtonClick} className='btn btn-success'>Click for Login</button>
-                            <p>Belum memiliki akun ? <Link to="/register" >Daftar disini</Link></p>
+                            <button onClick={this.onButtonClick} className='btn btn-success'>Login</button>   
                         </div>
                     </div>
                 </div>

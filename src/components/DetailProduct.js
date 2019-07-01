@@ -28,6 +28,7 @@ class DetailProduct extends Component {
                     <h5 className='card-title'>{name}</h5>
                     <p className='card-title'>{desc}</p>
                     <p className='card-text'>${price}</p>
+                    <input placeholder='qty'/>
                     <button className = "btn btn-outline-primary btn-sm">Add To Cart</button>
                 </div>
             </div>

@@ -19,14 +19,15 @@ export const onLoginUser = (user, pass) => {
         ).then(res => {
             // res.data = [], jumlah isi array menggunakan length
             if(res.data.length > 0){
-                const {id, username} = res.data[0]
+                const {id, username, role} = res.data[0]
 
                 dispatch( //dispatch karena biar lurus, bisa return juga tapi balik lagi ke middleware untuk di cek object apa function
                     {
                         type: "LOGIN_SUCCESS",
                         payload: {
                             id,
-                            username
+                            username,
+                            role
                         }
                     }
                 )
@@ -48,13 +49,14 @@ export const reLogin = (username) => {
                 username: username
             }
         }).then(x=>{
-            console.log(x.data[0].id + username)
+            // console.log(x.data[0].id + username)
             dispatch(
                 {
                     type: "LOGIN_SUCCESS",
                     payload: {
                         id: x.data[0].id,
-                        username
+                        username,
+                        role: x.data[0].role
                     }
                 }
             )
@@ -66,5 +68,15 @@ export const onLogoutUser = () => {
     cookie.remove('userName')
     return {
         type: 'LOGOUT_SUCCESS'
+    }
+}
+
+export const addToCart = (products) => {
+    console.log(products.qty)
+    return {
+        type: 'INPUT_CART',
+        payload: {
+            products: products
+        }
     }
 }

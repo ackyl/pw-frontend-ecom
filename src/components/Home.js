@@ -33,7 +33,7 @@ class Home extends Component {
         var x = this.state.products
 
         x = x.filter(item=>{
-            if(item.name.toLowerCase().includes(name)){
+            if(item.name.toLowerCase().includes(name.toLowerCase())){
                 return true
             }
         })
@@ -69,6 +69,7 @@ class Home extends Component {
     }
 
     renderList = () => {
+        console.log(this.state.search)
         return this.state.search.map( (item, index) => {
             return (
                 <ProductItem item={item} key={index} />

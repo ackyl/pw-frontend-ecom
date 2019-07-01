@@ -9,6 +9,7 @@ import Login from './Login'
 import Home from './Home'
 import ManageProduct from './ManageProduct'
 import DetailProduct from './DetailProduct'
+import Cart from './Cart'
 import { reLogin } from '../actions'
 
 const cookie = new cookies()
@@ -34,6 +35,7 @@ class App extends Component {
                     <Route path="/login" component={Login}/> {/* include() */}
                     <Route path="/manageproduct" component={ManageProduct}/> {/* include() */}
                     <Route path="/product/:product_id" component={DetailProduct}/>
+                    <Route path="/cart" component={Cart}/>
                 </div>
             </BrowserRouter>
         )

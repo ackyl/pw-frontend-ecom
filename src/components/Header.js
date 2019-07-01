@@ -12,10 +12,12 @@ import {
     NavbarBrand,
     Nav,
     NavItem,
-    NavLink, UncontrolledDropdown,DropdownToggle,
+    UncontrolledDropdown,DropdownToggle,
     DropdownMenu, DropdownItem } from 'reactstrap';
 
 class Header extends Component {
+
+    //Header Component
     constructor(props) {
         super(props);
     
@@ -23,21 +25,27 @@ class Header extends Component {
         this.state = {
           isOpen: false
         };
-      }
-      toggle() {
+    }
+    
+    toggle() {
         this.setState({
           isOpen: !this.state.isOpen
         });
-      }
+    }
 
-      onButtonClick = () => {
-          // menghapus username dari redux state
-          this.props.onLogoutUser()
-      }
+    onButtonClick = () => {
+        // menghapus username dari redux state
+        this.props.onLogoutUser()
+    }
+
+    componentDidMount(){
+        console.log(this.props.cart)
+    }
 
     render () {
+
+        //Render kalo belom login
         if(this.props.user.username == ''){
-            // Render ketika belum login
             return (
                 <div>
                     <Navbar color="light" light expand="md">
@@ -45,14 +53,6 @@ class Header extends Component {
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
-                        <NavItem>
-                            <Link to='/'>All Products</Link>
-                        </NavItem>
-                        <NavItem>
-                            <Link to='/manageproduct'>
-                                <Button color="warning" className="mx-3">Manage</Button>
-                            </Link>
-                        </NavItem>
                         <NavItem>
                             <Link to='/register'>
                                 <Button color="primary" className="mx-3">Register</Button>
@@ -68,49 +68,85 @@ class Header extends Component {
                     </Navbar>
                 </div>
             )
-        } 
+        }else if(this.props.user.role == 'user'){
+            return (
+                <div>
+                    <Navbar color="light" light expand="md">
+                        <NavbarBrand href="/"><h4>OWOPEDIA</h4></NavbarBrand>
+                    <NavbarToggler onClick={this.toggle} />
 
-        // Render setelah login
-        return (
-            <div>
-                <Navbar color="light" light expand="md">
-                    <NavbarBrand href="/">simpleMerce</NavbarBrand>
-                <NavbarToggler onClick={this.toggle} />
-                <Collapse isOpen={this.state.isOpen} navbar>
-                    <Nav className="ml-auto" navbar>
-                    <NavItem className='mt-2'>
-                        <Link to='/' >All Products</Link>
-                    </NavItem>
-                    <UncontrolledDropdown nav inNavbar>
-                    <DropdownToggle nav caret>
-                        Options
-                    </DropdownToggle>
-                    <DropdownMenu right>
-                        <DropdownItem>
-                        Option 1
-                        </DropdownItem>
-                        <DropdownItem>
-                        Option 2
-                        </DropdownItem>
-                        <DropdownItem divider />
-                        <Button className='dropdown-item' onClick={this.onButtonClick}>
-                            Logout
-                        </Button>
-                    </DropdownMenu>
-                    </UncontrolledDropdown>
-                    </Nav>
-                </Collapse>
-                </Navbar>
-            </div>
-            
                     
-          );
+
+                    <Collapse isOpen={this.state.isOpen} navbar>
+                        <Nav className="ml-auto" navbar>
+                        <NavItem>
+                            <Link to='/cart'>
+                                <Button color="primary" className="mx-3">Cart</Button>
+                            </Link>
+                        </NavItem>
+
+                        <UncontrolledDropdown nav inNavbar>
+                        <DropdownToggle nav caret>
+                            Options
+                        </DropdownToggle>
+                        <DropdownMenu right>
+                            <Button className='dropdown-item' onClick={this.onButtonClick}>
+                                Transaction History
+                            </Button>
+                            <DropdownItem divider />
+                            <Button className='dropdown-item' onClick={this.onButtonClick}>
+                                Logout
+                            </Button>
+                        </DropdownMenu>
+                        </UncontrolledDropdown>
+                        </Nav>
+                    </Collapse>
+                    </Navbar>
+                </div>
+            )}else{
+                return(
+                    <div>
+                        <Navbar color="light" light expand="md">
+                            <NavbarBrand href="/"><h4>OWOPEDIA</h4></NavbarBrand>
+                        <NavbarToggler onClick={this.toggle} />
+                        <Collapse isOpen={this.state.isOpen} navbar>
+                            <Nav className="ml-auto" navbar>
+                            <UncontrolledDropdown nav inNavbar>
+                            <DropdownToggle nav caret>
+                                Options
+                            </DropdownToggle>
+                            <DropdownMenu right>
+                                <DropdownItem>
+                                    <Link to='/manageproduct'>
+                                        <Button>Manage Product</Button>
+                                    </Link>
+                                </DropdownItem>
+                                <DropdownItem>
+                                    <Link to='/checkout'>
+                                        <Button>Manage Checkout</Button>
+                                    </Link>
+                                </DropdownItem>
+                                <DropdownItem divider />
+                                <Link to ='/login'>
+                                    <Button className='dropdown-item' onClick={this.onButtonClick}>
+                                        Logout
+                                    </Button>
+                                </Link>
+                            </DropdownMenu>
+                            </UncontrolledDropdown>
+                            </Nav>
+                        </Collapse>
+                        </Navbar>
+                    </div>
+                )
+            }
     }
 }
 
 const mapStateToProps = state => {
     return {
-        user: state.auth // {id, username}
+        user: state.auth,
+        cart: state.cart // {id, username}
     }
 }
 
