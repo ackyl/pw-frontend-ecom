@@ -72,11 +72,20 @@ export const onLogoutUser = () => {
 }
 
 export const addToCart = (products) => {
-    console.log(products.qty)
     return {
         type: 'INPUT_CART',
         payload: {
             products: products
+        }
+    }
+}
+
+export const addToCartExisted = (addCount) => {
+
+    return{
+        type: 'INPUT_CART_EXISTED',
+        payload: {
+            addCount: addCount
         }
     }
 }

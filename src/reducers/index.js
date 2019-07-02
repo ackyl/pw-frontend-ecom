@@ -40,6 +40,17 @@ const CartReducer = (data = initcart, action) => {
                 ...data,
                 products: [...data.products, action.payload.products]
             }
+        
+        case "INPUT_CART_EXISTED":
+            // console.log(data.products)
+            // console.log(data.products[action.payload.existed.id].qty)
+            // console.log(action.payload.existed.jumlah)
+
+            data.products[action.payload.addCount.id].qty += action.payload.addCount.qty
+            
+            return{
+                products: [...data.products]
+            }
 
         default:
             return data

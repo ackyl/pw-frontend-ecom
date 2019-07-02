@@ -69,7 +69,7 @@ class Home extends Component {
     }
 
     renderList = () => {
-        console.log(this.state.search)
+        // console.log(this.state.search)
         return this.state.search.map( (item, index) => {
             return (
                 <ProductItem item={item} key={index} />

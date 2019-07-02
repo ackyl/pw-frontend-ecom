@@ -38,10 +38,6 @@ class Header extends Component {
         this.props.onLogoutUser()
     }
 
-    componentDidMount(){
-        console.log(this.props.cart)
-    }
-
     render () {
 
         //Render kalo belom login

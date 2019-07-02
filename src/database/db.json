@@ -12,7 +12,33 @@
       "username": "ackyl",
       "email": "ackyl@gmail.com",
       "password": "ackyl",
-      "role": "user"
+      "role": "user",
+      "cart": [
+        {
+          "id": 1,
+          "name": "Omaewa",
+          "desc": "NANI",
+          "price": "999",
+          "src": "https://www.thisisbarry.com/wp-content/uploads/YourName/One-lake.jpg",
+          "qty": 100
+        },
+        {
+          "id": 5,
+          "name": "Polo",
+          "desc": "gravida sit amet porttitor vel",
+          "price": 653,
+          "src": "https://www.thisisbarry.com/wp-content/uploads/YourName/One-lake.jpg",
+          "qty": 1
+        },
+        {
+          "id": 6,
+          "name": "T-Shirt",
+          "desc": "lacinia ac quam.",
+          "price": 388,
+          "src": "https://www.thisisbarry.com/wp-content/uploads/YourName/One-lake.jpg",
+          "qty": 1
+        }
+      ]
     },
     {
       "id": 3,
@@ -722,6 +748,29 @@
       "desc": "consectetur adipiscing elit. Fusce volutpat justo velit. Donec mi erat",
       "price": 205,
       "src": "https://www.thisisbarry.com/wp-content/uploads/YourName/One-lake.jpg"
+    }
+  ],
+  "checkout": [
+    {
+      "id": 1,
+      "checkut_user": "list1",
+      "products": [
+        {
+          "id": 100,
+          "name": "Jacket",
+          "desc": "consectetur adipiscing elit. Fusce volutpat justo velit. Donec mi erat",
+          "price": 205,
+          "src": "https://www.thisisbarry.com/wp-content/uploads/YourName/One-lake.jpg",
+          "qty": 5
+        },
+        {
+          "id": 100,
+          "name": "Jacket",
+          "desc": "consectetur adipiscing elit. Fusce volutpat justo velit. Donec mi erat",
+          "price": 205,
+          "src": "https://www.thisisbarry.com/wp-content/uploads/YourName/One-lake.jpg"
+        }
+      ]
     }
   ]
 }
