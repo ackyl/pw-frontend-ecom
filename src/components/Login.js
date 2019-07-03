@@ -15,7 +15,6 @@ class Login extends Component {
 
         // tembak data ke database
         this.props.onLoginUser(user, pass)
-        
     }
 
     render () {
@@ -45,8 +44,9 @@ class Login extends Component {
                                     ref={(input) => {this.password = input}}
                                 />
                             </form>
+                            
+                            <button onClick={this.onButtonClick} className='btn btn-success'>Login</button>
 
-                            <button onClick={this.onButtonClick} className='btn btn-success'>Login</button>   
                         </div>
                     </div>
                 </div>

@@ -46,7 +46,9 @@ class Register extends Component {
                             {
                                 username: user,
                                 email: emaiL,
-                                password: pass
+                                password: pass,
+                                role: 'user',
+                                cart: []
                             }
                         ).then( (res) => {
                             console.log('Data berhasil di input')
@@ -62,12 +64,6 @@ class Register extends Component {
         }).catch( err => {
             console.log('Gagal request')
         })
-
-        // POST, axios.post, post / menaruh data
-        
-
-        
-
     }
 
     render() {
@@ -107,7 +103,7 @@ class Register extends Component {
                                     ref={(input) => {this.password = input}}
                                 />
                             </form>
-
+                            
                             <button onClick={this.onButtonClick} className='btn btn-success'>Register</button>
                         </div>
                     </div>

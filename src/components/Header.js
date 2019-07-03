@@ -45,7 +45,7 @@ class Header extends Component {
             return (
                 <div>
                     <Navbar color="light" light expand="md">
-                    <NavbarBrand href="/"><h4>OWOPEDIA</h4></NavbarBrand>
+                    <NavbarBrand href="/"><h4>TOTOPEDIA</h4></NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
@@ -68,7 +68,7 @@ class Header extends Component {
             return (
                 <div>
                     <Navbar color="light" light expand="md">
-                        <NavbarBrand href="/"><h4>OWOPEDIA</h4></NavbarBrand>
+                        <NavbarBrand href="/"><h4>TOTOPEDIA</h4></NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
 
                     
@@ -86,13 +86,11 @@ class Header extends Component {
                             Options
                         </DropdownToggle>
                         <DropdownMenu right>
-                            <Button className='dropdown-item' onClick={this.onButtonClick}>
-                                Transaction History
-                            </Button>
-                            <DropdownItem divider />
+                            <Link to={'/login'}>
                             <Button className='dropdown-item' onClick={this.onButtonClick}>
                                 Logout
                             </Button>
+                            </Link>
                         </DropdownMenu>
                         </UncontrolledDropdown>
                         </Nav>
@@ -103,7 +101,7 @@ class Header extends Component {
                 return(
                     <div>
                         <Navbar color="light" light expand="md">
-                            <NavbarBrand href="/"><h4>OWOPEDIA</h4></NavbarBrand>
+                            <NavbarBrand href="/"><h4>TOTOPEDIA</h4></NavbarBrand>
                         <NavbarToggler onClick={this.toggle} />
                         <Collapse isOpen={this.state.isOpen} navbar>
                             <Nav className="ml-auto" navbar>
@@ -117,12 +115,6 @@ class Header extends Component {
                                         <Button>Manage Product</Button>
                                     </Link>
                                 </DropdownItem>
-                                <DropdownItem>
-                                    <Link to='/checkout'>
-                                        <Button>Manage Checkout</Button>
-                                    </Link>
-                                </DropdownItem>
-                                <DropdownItem divider />
                                 <Link to ='/login'>
                                     <Button className='dropdown-item' onClick={this.onButtonClick}>
                                         Logout

@@ -23,8 +23,6 @@ class ProductItem extends Component {
                 
                 let find = 0
 
-                //replace item lama
-
                 if(x.data[0].cart != null){
                     let existProducts = []
                     existProducts = x.data[0].cart
@@ -60,39 +58,6 @@ class ProductItem extends Component {
                     })
                 }
             })
-
-        // //Add kalo tambah se product2nya
-        // if(itemFind == 0){
-
-        //     products.qty = qty
-
-        //     axios.get(
-        //         'http://localhost:2019/cart',
-        //         {
-        //             params: {
-        //                 id: id
-        //             }
-                    
-        //         }).then(x => {
-                    
-        //         })
-            
-        // }
-
-        //Add Kalo ada Itemnya di Cart, Nambah quantity doang
-        // this.props.cart.products.map( (productInCart,index) =>{
-        //     if(productInCart.id == products.id){
-        //         let addCount = {
-        //             id: index,
-        //             qty: qty
-        //         }
-        //         found = 1
-        //         this.props.addToCartExisted(addCount)
-        //     }
-        // })
-
-        // if(found == 0)
-        // this.props.addToCart
     }
 
 
@@ -123,9 +88,6 @@ class ProductItem extends Component {
                     <div className='card-body'>
                         <h5 className='card-title'>{name}</h5>
                         <p className='card-text'>${price}</p>
-                        <Link to={'/product/' + id}>
-                            <button className = "btn btn-outline-primary btn-sm">Details</button>
-                        </Link>
                     </div>
                 </div>
             )
@@ -136,7 +98,7 @@ class ProductItem extends Component {
 const mapStateToProps = state => {
     return {
         cart: state.cart,
-        auth: state.auth // {id, username}
+        auth: state.auth
     }
 }
 
